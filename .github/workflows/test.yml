@@ -18,6 +18,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - uses: toko-bifrost/ms-teams-deploy-card@master #  or "./" if in a local set-up
+      if: always()
+      with:
+          github-token: ${{ github.token }}
+          webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -25,8 +30,3 @@ jobs:
     - run: npm i
     - run: npm run build --if-present
     - run: npm test
-    - uses: toko-bifrost/ms-teams-deploy-card@master #  or "./" if in a local set-up
-      if: always()
-      with:
-          github-token: ${{ github.token }}
-          webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
