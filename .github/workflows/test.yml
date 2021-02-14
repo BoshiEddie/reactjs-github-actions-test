@@ -18,10 +18,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: toko-bifrost/ms-teams-deploy-card@master #  or "./" if in a local set-up
-      with:
-          github-token: ${{ github.token }}
-          webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+    -   uses: toko-bifrost/ms-teams-deploy-card@master #  or "./" if in a local set-up
+        with:
+            github-token: ${{ github.token }}
+            webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
